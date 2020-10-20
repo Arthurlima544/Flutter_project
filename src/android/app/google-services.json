@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "274153333872",
+    "firebase_url": "https://fav-games.firebaseio.com",
+    "project_id": "fav-games",
+    "storage_bucket": "fav-games.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274153333872:android:e6747c05cff94e1d5580b5",
+        "android_client_info": {
+          "package_name": "com.example.src"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274153333872-e45rduufq72uobsg8qpt17gnug915r34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9aK-Lv2g3UEHNqyS-uI0z3OVAKfdvceg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274153333872-e45rduufq72uobsg8qpt17gnug915r34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
