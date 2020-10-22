@@ -9,8 +9,11 @@ class ListaGamesPage extends StatelessWidget {
         title: Text("Games Favoritos"),
       ),
       drawer: FavGamesDrawer(),
-      body: Center(
-        child: Text('hello'),
+      /* body: , */
+      body: Column(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => Navigator.of(context).pushNamed("/novogame"),
       ),
     );
   }

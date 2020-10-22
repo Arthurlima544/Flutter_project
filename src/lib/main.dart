@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:src/Pages/NovoGamePage.dart';
 import 'Pages/HomePage.dart';
 import 'Pages/ListaGamesPage.dart';
+import 'Pages/NovoGamePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: <String, WidgetBuilder>{
         "/home": (BuildContext context) => HomePage(),
-        "/listaGames": (BuildContext context) => ListaGamesPage(),
+        "/listagames": (BuildContext context) => ListaGamesPage(),
+        "/novogame": (BuildContext context) => NovoGamePage(),
       },
     );
   }

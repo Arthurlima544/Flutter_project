@@ -25,8 +25,8 @@ class FavGamesDrawer extends StatelessWidget {
           ),
           ListTile(
             title: Text("Games favoritos"),
-            trailing: Icon(Icons.login),
-            onTap: () => Navigator.of(context).pushNamed("/listaGames"),
+            trailing: Icon(Icons.favorite),
+            onTap: () => Navigator.of(context).pushNamed("/listagames"),
           ),
           ListTile(
             title: Text("fechar"),
