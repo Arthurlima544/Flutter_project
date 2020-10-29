@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Pages/HomePage/HomePage.dart';
 import 'Pages/ListaGames/ListaGamesPage.dart';
-import 'Pages/NovoGame/NovoGamePage.dart';
+import 'Pages/GameEspecifico/GameEspecifico.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: HomePage(),
-      // TODO: vou realmente utilzar essas rotas desse jeito?
+      //! vou realmente utilzar essas rotas desse jeito?
       routes: {
         "/home": (context) => HomePage(),
         "/listagames": (context) => ListaGamesPage(),

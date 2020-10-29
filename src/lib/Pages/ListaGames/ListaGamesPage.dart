@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:src/Pages/GameEspecifico/GameEspecifico.dart';
 import 'package:src/my_widgets/FavGamesDrawer.dart';
 import 'ListaGamesBloc.dart';
 import 'package:src/db/ListaGames.dart';
@@ -31,6 +32,27 @@ class _ListaGamesPageState extends State<ListaGamesPage> {
                 final item = snapshot.data[index];
 
                 return ListTile(
+                  onTap: () {
+                    /* Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Item " + item.titulo + " Clicado"),
+                      ),
+                    ); */
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NovoGamePage(
+                                titulo: item.titulo,
+                              )),
+                    );
+                    //https://flutter.dev/docs/cookbook/design/snackbars
+                    /* action: SnackBarAction(
+                    label: 'Undo',
+                    onPressed: () {
+                         
+                    },
+                  ), */
+                  },
                   title: Text(
                     item.titulo,
                   ),
@@ -60,7 +82,8 @@ class _ListaGamesPageState extends State<ListaGamesPage> {
     );
   }
 
-  _showDialog(BuildContext context) async {
+//! pq não faz diferença eu colocar ela como async? ou faz diferença?
+  _showDialog(BuildContext context) {
     final _controller = TextEditingController();
 
     showDialog(
