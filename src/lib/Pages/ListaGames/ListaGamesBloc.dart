@@ -25,7 +25,9 @@ class MyAppBloc {
     item.reference.set(item.toMap());
   }
 
+  //async transforma uma função parecida com o future... onde vai
   create(String titulo) async {
+    //vai esperar o GamesService ser execultado para retornar
     await GamesService().create(Games(titulo, true));
   }
 
