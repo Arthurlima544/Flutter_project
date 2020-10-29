@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:src/Pages/NovoGamePage.dart';
-import 'Pages/HomePage.dart';
-import 'Pages/ListaGamesPage.dart';
-import 'Pages/NovoGamePage.dart';
+import 'Pages/HomePage/HomePage.dart';
+import 'Pages/ListaGames/ListaGamesPage.dart';
+import 'Pages/NovoGame/NovoGamePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +18,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: HomePage(),
-      routes: <String, WidgetBuilder>{
-        "/home": (BuildContext context) => HomePage(),
-        "/listagames": (BuildContext context) => ListaGamesPage(),
-        "/novogame": (BuildContext context) => NovoGamePage(),
+      // TODO: vou realmente utilzar essas rotas desse jeito?
+      routes: {
+        "/home": (context) => HomePage(),
+        "/listagames": (context) => ListaGamesPage(),
+        "/novogame": (context) => NovoGamePage(),
       },
     );
   }

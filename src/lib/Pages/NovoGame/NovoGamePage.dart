@@ -20,7 +20,7 @@ class _NovoGamePageState extends State<NovoGamePage> {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: "Game",
+                labelText: "Titulo",
               ),
             ),
             TextField(
