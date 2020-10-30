@@ -7,15 +7,17 @@ class GamesService extends ListaGamesServiceInterface {
 
   // !Que viagem é essa?
   Stream<List<Games>> getList() {
-    return _fb.collection('games').snapshots().map((snap) {
-      return snap.docs.map((it) => Games.fromMap(it)).toList();
-    });
+    return _fb.collection('games').snapshots().map(
+      (snap) {
+        return snap.docs.map((it) => Games.fromJson(it)).toList();
+      },
+    );
   }
 
   //Função assyncrona que cria um documento na collection games
   // a variavel games é uma instancia e ela possue um metodo to map..
   // Future<void> não produz um valor usável.
   Future<void> create(Games games) async {
-    await _fb.collection('games').add(games.toMap());
+    await _fb.collection('games').add(games.toJson());
   }
 }

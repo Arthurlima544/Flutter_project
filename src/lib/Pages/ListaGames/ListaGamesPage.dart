@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:src/Pages/GameEspecifico/GameEspecifico.dart';
-import 'package:src/my_widgets/FavGamesDrawer.dart';
+import 'package:src/Componentes/FavGamesDrawer.dart';
+import 'package:src/Pages/GameEspecifico/GameFavoritoPage.dart';
 import 'ListaGamesBloc.dart';
 import 'package:src/db/ListaGames.dart';
 import 'package:src/models/ListaGamesModels.dart';
@@ -31,43 +31,36 @@ class _ListaGamesPageState extends State<ListaGamesPage> {
               itemBuilder: (BuildContext _, int index) {
                 final item = snapshot.data[index];
 
-                return ListTile(
-                  onTap: () {
-                    /* Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text("Item " + item.titulo + " Clicado"),
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white70,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.6),
+                        blurRadius: 2,
+                        spreadRadius: 3,
                       ),
-                    ); */
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NovoGamePage(
-                                titulo: item.titulo,
-                              )),
-                    );
-                    //https://flutter.dev/docs/cookbook/design/snackbars
-                    /* action: SnackBarAction(
-                    label: 'Undo',
-                    onPressed: () {
-                         
-                    },
-                  ), */
-                  },
-                  title: Text(
-                    item.titulo,
+                    ],
                   ),
-                  /* subtitle: Text(item.), */
-                  leading: IconButton(
-                    icon: Icon(Icons.favorite),
-                    color: Colors.red,
-                    onPressed: () {},
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    color: Colors.black,
-                    onPressed: () {
-                      _bloc.delete(item);
+                  margin: EdgeInsets.all(5),
+                  child: ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GameFavoritoPage(game: item),
+                        ),
+                      );
                     },
+                    title: Text(item.titulo),
+                    //* Deletar
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Colors.black,
+                      onPressed: () {
+                        _bloc.delete(item);
+                      },
+                    ),
                   ),
                 );
               },
@@ -84,16 +77,33 @@ class _ListaGamesPageState extends State<ListaGamesPage> {
 
 //! pq não faz diferença eu colocar ela como async? ou faz diferença?
   _showDialog(BuildContext context) {
-    final _controller = TextEditingController();
+    final _titulocontroller = TextEditingController();
+    final _descricaocontroller = TextEditingController();
 
     showDialog(
         context: context,
         builder: (_) {
           return AlertDialog(
-            title: Text("Digite o Jogo"),
-            content: TextField(
-              controller: _controller,
+            title: Text("Jogo favorito"),
+            content: Column(
+              children: <Widget>[
+                ListTile(
+                  title: TextFormField(
+                    controller: _titulocontroller,
+                    decoration: InputDecoration(labelText: 'Titulo'),
+                  ),
+                ),
+                ListTile(
+                  title: TextFormField(
+                    controller: _descricaocontroller,
+                    decoration: InputDecoration(labelText: 'Descricao'),
+                  ),
+                ),
+              ],
             ),
+            /* TextField(
+              controller: _controller,
+            ), */
             actions: <Widget>[
               FlatButton(
                   onPressed: () {
@@ -102,7 +112,8 @@ class _ListaGamesPageState extends State<ListaGamesPage> {
                   child: Text("Cancelar")),
               FlatButton(
                   onPressed: () {
-                    _bloc.create(_controller.text);
+                    _bloc.create(
+                        _titulocontroller.text, 1, _descricaocontroller.text);
                     Navigator.pop(context);
                   },
                   child: Text("Salvar")),
