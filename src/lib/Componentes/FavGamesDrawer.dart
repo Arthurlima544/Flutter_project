@@ -11,11 +11,29 @@ class FavGamesDrawer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("arthur"),
-            accountEmail: Text("arthurlima544@gmail.com"),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(6, 22, 47, 1),
+            ),
+            accountName: Text(
+              "arthur",
+              style: TextStyle(
+                color: Color.fromRGBO(39, 174, 194, 1),
+              ),
+            ),
+            accountEmail: Text(
+              "arthurlima544@gmail.com",
+              style: TextStyle(
+                color: Color.fromRGBO(39, 174, 194, 1),
+              ),
+            ),
             currentAccountPicture: CircleAvatar(
-              backgroundColor: Colors.red,
-              child: Text("AL"),
+              backgroundColor: Color.fromRGBO(39, 174, 194, 1),
+              child: Text(
+                "AL",
+                style: TextStyle(
+                  color: Color.fromRGBO(6, 22, 47, 1),
+                ),
+              ),
             ),
           ),
           ListTile(

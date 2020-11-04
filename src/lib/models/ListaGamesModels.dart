@@ -1,25 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Games {
+  //* fields
   String titulo;
-  bool favorito;
-  //oque é esse DocumentReference? jeito de referenciar os documentos de um determinado collection
+  int favorito;
+  String descricao;
+
+  //*Referencia ao firestore de uma collection games
   DocumentReference reference;
+  //* Construtor
+  Games(this.titulo, this.favorito, this.descricao);
 
-  Games(this.titulo, this.favorito);
-
-  //! oque é esse from Map??
-  //! oque é esse DocumentSnapshot?
-  //! oque faz?
+  //*Construtor que constroi uma nova instancia de Games apartir de uma estrutura de mapa..
   Games.fromMap(DocumentSnapshot document) {
-    this.reference = document.reference; // redundante não?
-    this.favorito = document.data()['favorito'];
+    this.reference = document.reference;
     this.titulo = document.data()['titulo'];
+    this.favorito = document.data()['favorito'];
+    this.descricao = document.data()['descricao'];
   }
-  //toMap é uma funcao de mapeamento que une os elementos de dentro em um dicionario ou em um HashMap...
-  //! será que eu estou mapeando em uma mesma variavel?
+  //*Método que converte as propriedades de Games para uma string
   Map<String, dynamic> toMap() => {
-        "favorito": favorito,
         "titulo": titulo,
+        "favorito": favorito,
+        "descricao": descricao,
       };
 }
