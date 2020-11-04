@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:src/models/ListaGamesModels.dart';
-import 'package:src/db/ListaGames.dart';
-/* import 'package:src/db/ListaGamesinterface.dart'; */
+import 'package:src/Services/ListaGames.dart';
 
 class MyAppBloc {
   final _controller = StreamController<List<Games>>();
   Stream<List<Games>> get output => _controller.stream;
   Sink<List<Games>> get input => _controller.sink;
-
+  //Construtor
   MyAppBloc(GamesService service) {
     //voce ouve a stream para gerar eventos...
     service.getList().listen(
@@ -23,10 +22,10 @@ class MyAppBloc {
     _controller.close();
   }
 
-/*   update(Games item, int value) {
-    item.favorito = item.favorito++;
+  favoriteUpdate(Games item) {
+    item.favorito = item.favorito + 1;
     item.reference.set(item.toMap());
-  } */
+  }
 
   //async transforma uma função parecida com o future... onde vai
   create(String titulo, int favorito, String descricao) async {
